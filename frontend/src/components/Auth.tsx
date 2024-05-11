@@ -34,7 +34,7 @@ function Auth({ type }: prop) {
            console.log("response.data.token",response.data.token)
            const token = response.data.token;
            localStorage.setItem('token',token)
-           navigate('/blog')
+           navigate('/')
         } catch (error) {
             alert(`problem while ${type === 'signup' ? 'signup' :'signin'}`)
         }
