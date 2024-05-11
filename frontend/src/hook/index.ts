@@ -30,7 +30,7 @@ try {
 } catch (error) {
     navigate('/signin')
 }
-    },[])
+    },[navigate])
 
 
     return {
