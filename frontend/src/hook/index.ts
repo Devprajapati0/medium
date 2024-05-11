@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 interface prop{
     title:string,
@@ -12,18 +13,23 @@ interface prop{
 
 }
 export const useBlog = () => {
+    const navigate =useNavigate()
     const [loading,setLoading] = useState<boolean>(true)
     const [blog,setBlogs] = useState<prop[]>([])
 
     
     useEffect(()=>{
-axios.get(' https://medium.devprajapati742.workers.dev/api/v1/blog/getallblog',{
-    headers:{
-        Authorization: localStorage.getItem('token')
-    }
-})
-.then((response)=>{setBlogs(response.data.postFound)})
-        setLoading(false)
+try {
+    axios.get(' https://medium.devprajapati742.workers.dev/api/v1/blog/getallblog',{
+        headers:{
+            Authorization: localStorage.getItem('token')
+        }
+    })
+    .then((response)=>{setBlogs(response.data.postFound)})
+            setLoading(false)
+} catch (error) {
+    navigate('/signin')
+}
     },[])
 
 

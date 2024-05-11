@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom'
 
 function Blog() {
 const {postid} = useParams()
-
+const navigate = useNavigate()
   const {loading,blog} = useSingle({postid : postid || ''})
   if(loading || !blog){
     return <Blogskeleton />
+    navigate('/signin')
   }
   return (
     <div>
