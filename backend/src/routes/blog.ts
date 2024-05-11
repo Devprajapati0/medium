@@ -13,64 +13,9 @@ export const blogRouter = new Hono<{
       authen:string
     }
   }>()
+
+
   
-blogRouter.get('/getblog/:postid',async(c) => {
-    const prisma = new PrismaClient({
-        datasourceUrl: c.env.DATABASE_URL
-    }).$extends(withAccelerate())
-
-    try {
-      
-        const postid =  c.req.param('postid')
-        console.log("posyid",postid)
-       const postFound =  await prisma.post.findUnique({
-        where:{
-            id:postid,
-        },
-        select:{
-            id:true,
-            title:true,
-            content:true,
-            author:{
-                select:{
-                    name:true
-                }
-            }
-        }
-     
-    })
-    // console.log("\authen:",postid);
-    // console.log("authoid:",authorid);
-    // console.log("postfound:",postFound);
-    
-        if(!postFound){
-            return c.json(
-                {
-                    error:"postFound problem"
-                }
-            )
-        }
-
-        console.log(postFound)
-
-        c.status(200)
-        return c.json(
-            {
-                message:"successfully create dpost",
-                id:postFound
-            },
-        )
-    } catch (error) {
-        c.status(411)
-        return c.json(
-            {
-                error:error
-            }
-        )
-    }
-   
-})
-
 
 blogRouter.get('/getallblog',async(c) => {
     const prisma = new PrismaClient({
@@ -241,3 +186,59 @@ blogRouter.patch('/update',async(c) => {
 })
 
  
+blogRouter.get('/getblog/:postid',async(c) => {
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL
+    }).$extends(withAccelerate())
+
+    try {
+      
+        const postid =  c.req.param('postid')
+        console.log("posyid",postid)
+       const postFound =  await prisma.post.findUnique({
+        where:{
+            id:postid,
+        },
+        select:{
+            id:true,
+            title:true,
+            content:true,
+            author:{
+                select:{
+                    name:true
+                }
+            }
+        }
+     
+    })
+    // console.log("\authen:",postid);
+    // console.log("authoid:",authorid);
+    // console.log("postfound:",postFound);
+    
+        if(!postFound){
+            return c.json(
+                {
+                    error:"postFound problem"
+                }
+            )
+        }
+
+        console.log(postFound)
+
+        c.status(200)
+        return c.json(
+            {
+                message:"successfully create dpost",
+                id:postFound
+            },
+        )
+    } catch (error) {
+        c.status(411)
+        return c.json(
+            {
+                error:error
+            }
+        )
+    }
+   
+})
