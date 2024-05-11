@@ -21,13 +21,13 @@ function Allblogs() {
     <Appbar />
     {blog.map((singleblog) => (
                     <Blogcard
-                        key={singleblog.id} // Add a unique key prop for each mapped component
-                        title={singleblog.title}
-                        authorName={singleblog.author.name}
-                        publishedDate={singleblog.id} // Assuming this should be a date
-                        content={singleblog.content}
-                        id={singleblog.id}
-                    />
+                    key={singleblog.id} // Add a unique key prop for each mapped component
+                    title={singleblog.title}
+                    authorName={singleblog.author.name}
+                    publishedDate={singleblog.publishedDate} // Assuming this should be a date
+                    content={singleblog.content}
+                    id={singleblog.id} // Assuming each blog has an id property
+                />
                 ))}
 
          

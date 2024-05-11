@@ -8,7 +8,7 @@ function Blog() {
 const {postid} = useParams()
 
   const {loading,blog} = useSingle({postid : postid || ''})
-  if(loading){
+  if(loading || !blog){
     return <Blogskeleton />
   }
   return (
@@ -25,9 +25,9 @@ interface sub{
   content: string;
   author:{
       name:string
-  } | null
+  } 
 }
-function Fullblog({blog}:sub){
+function Fullblog({blog}:{blog:sub}){
   const navigate = useNavigate()
   return (
     <div>
@@ -45,7 +45,7 @@ function Fullblog({blog}:sub){
           {blog.content}
         </div>
         <div className='bg-screen-200 col-spn-4'>
-       Author: {blog.name || 'anomys'}
+       Author: {blog.author.name || 'anomys'}
        </div>
       </div>
     </div>

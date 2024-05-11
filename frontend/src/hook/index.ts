@@ -4,7 +4,12 @@ import { useEffect, useState } from "react"
 interface prop{
     title:string,
     content:string,
-    published:boolean
+    author:{
+        name:string
+    },
+    id:string,
+    publishedDate:string
+
 }
 export const useBlog = () => {
     const [loading,setLoading] = useState<boolean>(true)
@@ -33,12 +38,12 @@ interface hub{
     content: string;
     author:{
         name:string
-    }
+    } 
 }
 
 export const useSingle = ({postid}:{postid:string}) =>{
     const [loading,setLoading] = useState<boolean>(true)
-    const [blog,setBlog] = useState<hub>({})
+    const [blog,setBlog] = useState<hub>()
 
     useEffect(()=>{
         async function api(){
