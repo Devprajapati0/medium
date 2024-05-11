@@ -6,7 +6,7 @@ function Appbar() {
   const naigate = useNavigate()
   return (
     <div className="border-b flex justify-between px-10 py-3 " >
-       <Link to={'/'}>
+       <Link to={'/allblog'}>
        <div>
             Medium
         </div></Link>

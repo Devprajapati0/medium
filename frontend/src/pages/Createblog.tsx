@@ -18,7 +18,7 @@ function Createblog() {
            })
 
            if(resp)
-           naviagte('/')
+           naviagte('/allblog')
      } catch (error) {
         alert('error while creating')
      }

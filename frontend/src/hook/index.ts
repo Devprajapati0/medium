@@ -28,7 +28,7 @@ try {
     .then((response)=>{setBlogs(response.data.postFound)})
             setLoading(false)
 } catch (error) {
-    navigate('/signin')
+    navigate('/')
 }
     },[navigate])
 
