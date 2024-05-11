@@ -28,7 +28,7 @@ function Auth({ type }: prop) {
 
    async function signupapi(){
         try {
-           const response = await axios.post(`http://localhost:8787/api/v1/users/${type === 'signup' ? 'signup' : 'signin'}`,postInputs)
+           const response = await axios.post(` https://medium.devprajapati742.workers.dev/api/v1/users/${type === 'signup' ? 'signup' : 'signin'}`,postInputs)
            console.log("response",response)
            console.log("response.data",response.data)
            console.log("response.data.token",response.data.token)

@@ -11,7 +11,7 @@ function Createblog() {
     })
     const handleclick = async() => {
      try {
-         const resp = await axios.post('http://localhost:8787/api/v1/blog/create',data,{
+         const resp = await axios.post(' https://medium.devprajapati742.workers.dev/api/v1/blog/create',data,{
                headers:{
                    Authorization:localStorage.getItem('token')
                }

@@ -12,7 +12,7 @@ export const useBlog = () => {
 
     
     useEffect(()=>{
-axios.get('http://localhost:8787/api/v1/blog/getallblog',{
+axios.get(' https://medium.devprajapati742.workers.dev/api/v1/blog/getallblog',{
     headers:{
         Authorization: localStorage.getItem('token')
     }
@@ -42,7 +42,7 @@ export const useSingle = ({postid}:{postid:string}) =>{
 
     useEffect(()=>{
         async function api(){
-            axios.get(`http://localhost:8787/api/v1/blog/getblog/${postid}`,{
+            axios.get(` https://medium.devprajapati742.workers.dev/api/v1/blog/getblog/${postid}`,{
                 headers:{
                     Authorization: localStorage.getItem('token')
                 }

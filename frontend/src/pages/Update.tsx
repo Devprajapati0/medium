@@ -19,7 +19,7 @@ function Update() {
      })
     const handleclick = async() => {
      try {
-          await axios.patch('http://localhost:8787/api/v1/blog/update',{
+          await axios.patch(' https://medium.devprajapati742.workers.dev/api/v1/blog/update',{
             ...data,
             postid:id
          },{
