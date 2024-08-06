@@ -9,7 +9,7 @@ const app = new Hono<{
         authen:string
       }
 }>()
-
+//ok
 export const jwtverify = async(c,next)=>{
     try {
         const token = c.req.header('Authorization')?.replace("Bearer ", "") 
